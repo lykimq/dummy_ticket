@@ -1,0 +1,29 @@
+{
+  "open_modules": [
+    "crawlori",
+    "common"
+  ],
+  "types": [],
+  "body": [
+    {
+      "name": "register_all_plugins",
+      "args": [
+        "config"
+      ],
+      "content": {
+        "LetOpen": [
+          "Make(Pg)(E)",
+          {
+            "SeqContent": [
+              {
+                "StrContent": "Plugins.register_mod (module Dummy_ticket_plugin)"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    ";",
+    "Lwt.map (Result.iter_error Rp.print_error) @@\nlet>? () = init config in\nloop config"
+  ]
+}

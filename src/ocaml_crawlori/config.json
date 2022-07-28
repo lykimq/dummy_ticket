@@ -1,0 +1,11 @@
+
+{ "nodes": [
+    "http://localhost:20000/"
+  ],
+  "sleep": 1,
+  "start": 2,
+  "confirmations_needed": 2,
+  "step_forward": 30,
+  "register_kinds": [],
+  "originator_address" : "<TZ1 USED TO DEPLOY CONTRACT>"
+ }

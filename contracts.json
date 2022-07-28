@@ -1,0 +1,8 @@
+{
+  "contracts": [
+    {
+      "contract_name": "dummy_ticket",
+      "original_format": "michelson"
+    }
+  ]
+}

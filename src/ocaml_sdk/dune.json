@@ -1,0 +1,20 @@
+[
+  {
+    "kind": "library",
+    "name": "dummy_ticket_ocaml_interface",
+    "modules": [
+      "dummy_ticket_code",
+      "dummy_ticket_ocaml_interface"
+    ],
+    "libraries": [
+      "factori_types",
+      "blockchain",
+      "tzfunc",
+      "ez_api.icurl_lwt",
+      "lwt.unix"
+    ],
+    "implements": [],
+    "preprocess": [],
+    "preprocessor_deps": []
+  }
+]

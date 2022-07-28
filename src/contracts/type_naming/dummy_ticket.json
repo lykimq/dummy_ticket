@@ -1,0 +1,217 @@
+[
+  {
+    "name": "withdraw_from_deku",
+    "type": {
+      "record": {
+        "PairP": [
+          {
+            "PairP": [
+              {
+                "LeafP": [
+                  "deku_consensus",
+                  {
+                    "base": "address"
+                  }
+                ]
+              },
+              {
+                "LeafP": [
+                  "handle",
+                  {
+                    "tvar": [
+                      "handle",
+                      {
+                        "record": {
+                          "PairP": [
+                            {
+                              "PairP": [
+                                {
+                                  "PairP": [
+                                    {
+                                      "LeafP": [
+                                        "amount",
+                                        {
+                                          "base": "nat"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "LeafP": [
+                                        "data",
+                                        {
+                                          "base": "byte"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "LeafP": [
+                                    "id",
+                                    {
+                                      "base": "nat"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "LeafP": [
+                                    "owner",
+                                    {
+                                      "base": "address"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "LeafP": [
+                                "ticketer",
+                                {
+                                  "base": "address"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "LeafP": [
+              "handles_hash",
+              {
+                "base": "byte"
+              }
+            ]
+          },
+          {
+            "LeafP": [
+              "proof",
+              {
+                "unary": [
+                  "list",
+                  {
+                    "pair": [
+                      {
+                        "base": "byte"
+                      },
+                      {
+                        "base": "byte"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "handle",
+    "type": {
+      "record": {
+        "PairP": [
+          {
+            "PairP": [
+              {
+                "PairP": [
+                  {
+                    "LeafP": [
+                      "amount",
+                      {
+                        "base": "nat"
+                      }
+                    ]
+                  },
+                  {
+                    "LeafP": [
+                      "data",
+                      {
+                        "base": "byte"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "LeafP": [
+                  "id",
+                  {
+                    "base": "nat"
+                  }
+                ]
+              },
+              {
+                "LeafP": [
+                  "owner",
+                  {
+                    "base": "address"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "LeafP": [
+              "ticketer",
+              {
+                "base": "address"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "mint_to_deku",
+    "type": {
+      "record": {
+        "PairP": [
+          {
+            "PairP": [
+              {
+                "LeafP": [
+                  "deku_consensus",
+                  {
+                    "base": "address"
+                  }
+                ]
+              },
+              {
+                "LeafP": [
+                  "deku_recipient",
+                  {
+                    "base": "address"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "LeafP": [
+              "ticket_amount",
+              {
+                "base": "nat"
+              }
+            ]
+          },
+          {
+            "LeafP": [
+              "ticket_data",
+              {
+                "base": "byte"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+]

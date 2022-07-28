@@ -1,0 +1,176 @@
+[
+  {
+    "kind": "library",
+    "name": "dummy_ticket_plugin",
+    "modules": [
+      "dummy_ticket_plugin"
+    ],
+    "libraries": [
+      "bm_utils",
+      "crawlori.pg",
+      "contracts",
+      "dummy_ticket_ocaml_interface",
+      "dummy_ticket_tables"
+    ],
+    "implements": [],
+    "preprocess": [
+      "(pps pgocaml_ppx ppx_deriving_encoding ez_api.ppx)"
+    ],
+    "preprocessor_deps": [
+      "(env_var \"PGDATABASE\")",
+      "(env_var \"PGCUSTOM_CONVERTERS_CONFIG\")",
+      ".db_witness"
+    ]
+  },
+  {
+    "kind": "library",
+    "name": "dummy_ticket_tables",
+    "modules": [
+      "dummy_ticket_tables"
+    ],
+    "libraries": [],
+    "implements": [],
+    "preprocess": [],
+    "preprocessor_deps": []
+  },
+  {
+    "deps": [],
+    "targets": [],
+    "action": [
+      "(write-file db_env.ml \"\nlet database = \\\"%{env:PGDATABASE=dummy_ticket}\\\"\nlet no_update = false\")"
+    ]
+  },
+  {
+    "kind": "library",
+    "name": "db_env_box",
+    "modules": [
+      "db_env"
+    ],
+    "libraries": [],
+    "implements": [
+      "crawlori.db_env"
+    ],
+    "preprocess": [],
+    "preprocessor_deps": []
+  },
+  {
+    "kind": "library",
+    "name": "static_tables",
+    "modules": [
+      "static_tables"
+    ],
+    "libraries": [],
+    "implements": [],
+    "preprocess": [],
+    "preprocessor_deps": []
+  },
+  {
+    "kind": "library",
+    "name": "contracts_table",
+    "modules": [
+      "contracts_table"
+    ],
+    "libraries": [],
+    "implements": [],
+    "preprocess": [],
+    "preprocessor_deps": []
+  },
+  {
+    "kind": "library",
+    "name": "contracts",
+    "modules": [
+      "contracts"
+    ],
+    "libraries": [
+      "common",
+      "crawlori.pg"
+    ],
+    "implements": [],
+    "preprocess": [
+      "(pps pgocaml_ppx ppx_deriving_encoding ez_api.ppx)"
+    ],
+    "preprocessor_deps": [
+      "(env_var \"PGDATABASE\")",
+      "(env_var \"PGCUSTOM_CONVERTERS_CONFIG\")",
+      ".db_witness"
+    ]
+  },
+  {
+    "kind": "executable",
+    "name": "update",
+    "modules": [
+      "update"
+    ],
+    "libraries": [
+      "dummy_ticket_tables",
+      "static_tables",
+      "contracts_table",
+      "ez_pgocaml",
+      "crawlori.tables",
+      "db_env_box"
+    ]
+  },
+  {
+    "deps": [
+      "update.exe"
+    ],
+    "targets": [
+      ".db_witness"
+    ],
+    "action": [
+      "(with-stdout-to %{targets} (run %{project_root}/src/ocaml_crawlori/update.exe))"
+    ]
+  },
+  {
+    "kind": "library",
+    "name": "common",
+    "modules": [
+      "common",
+      "info"
+    ],
+    "libraries": [
+      "crawlori.pg",
+      "db_env_box",
+      "tzfunc"
+    ],
+    "implements": [],
+    "preprocess": [
+      "(pps pgocaml_ppx ppx_deriving_encoding)"
+    ],
+    "preprocessor_deps": [
+      "(env_var \"PGDATABASE\")",
+      "(env_var \"PGCUSTOM_CONVERTERS_CONFIG\")",
+      ".db_witness"
+    ]
+  },
+  {
+    "kind": "library",
+    "name": "bm_utils",
+    "modules": [
+      "bm_utils"
+    ],
+    "libraries": [
+      "common",
+      "crawlori.pg",
+      "tzfunc"
+    ],
+    "implements": [],
+    "preprocess": [],
+    "preprocessor_deps": []
+  },
+  {
+    "kind": "executable",
+    "name": "crawler",
+    "modules": [
+      "crawler",
+      "register"
+    ],
+    "libraries": [
+      "dummy_ticket_plugin",
+      "common",
+      "crawlori",
+      "ez_api.icurl_lwt",
+      "ez_api.server"
+    ]
+  }
+]

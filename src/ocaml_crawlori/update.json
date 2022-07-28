@@ -1,0 +1,29 @@
+{
+  "open_modules": [],
+  "types": [],
+  "body": [
+    {
+      "name": "upgrade",
+      "args": [],
+      "content": {
+        "listConcat": [
+          "Static_tables.upgrade",
+          "Contracts_table.upgrade",
+          "Dummy_ticket_tables.upgrade"
+        ]
+      }
+    },
+    {
+      "name": "downgrade",
+      "args": [],
+      "content": {
+        "listConcat": [
+          "Static_tables.downgrade",
+          "Contracts_table.downgrade",
+          "Dummy_ticket_tables.downgrade"
+        ]
+      }
+    },
+    "let () =\n  let database = Option.value ~default:Db_env.database (Sys.getenv_opt \"PGDATABASE\") in\n  let upgrade0 dbh version =\n    EzPG.upgrade ~dbh ~version ~downgrade:Tables.downgrade Tables.upgrade in\n  let upgrade1 dbh version =\n    EzPG.upgrade ~dbh ~version ~downgrade upgrade in\n  let upgrades = [ 0, upgrade0; 1, upgrade1 ] in\n  EzPGUpdater.main database ~upgrades\n"
+  ]
+}

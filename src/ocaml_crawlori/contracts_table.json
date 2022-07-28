@@ -1,0 +1,59 @@
+{
+  "name": "contracts",
+  "fields": [
+    {
+      "name": "address",
+      "type": "varchar",
+      "option": false,
+      "index": "no_order",
+      "source": "fun_parameter"
+    },
+    {
+      "name": "kind",
+      "type": "varchar",
+      "option": false,
+      "index": "no_order",
+      "source": "fun_parameter"
+    },
+    {
+      "name": "transaction",
+      "type": "varchar",
+      "option": false,
+      "source": "operation"
+    },
+    {
+      "name": "block",
+      "type": "varchar",
+      "option": false,
+      "index": "no_order",
+      "source": "operation"
+    },
+    {
+      "name": "index",
+      "type": "integer",
+      "option": false,
+      "source": "operation"
+    },
+    {
+      "name": "level",
+      "type": "integer",
+      "option": false,
+      "index": "no_order",
+      "source": "operation"
+    },
+    {
+      "name": "tsp",
+      "type": "timestamp",
+      "option": false,
+      "index": "no_order",
+      "source": "operation"
+    },
+    {
+      "name": "main",
+      "type": "boolean",
+      "option": false,
+      "index": "no_order",
+      "source": "fun_parameter"
+    }
+  ]
+}
